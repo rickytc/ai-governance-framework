@@ -7,6 +7,7 @@ How inherent risk, control effectiveness, residual risk, and the deployment gate
 Inherent risk is the exposure before mitigating controls are credited. Score Likelihood and Impact independently on the 1-5 anchors below, then multiply. The product ranges from 1 to 25 and maps to a four-tier rating band.
 
 ### Likelihood
+
 | Level | Rating | Description |
 |---|---|---|
 | 1 | Rare | May occur only in exceptional circumstances, no known occurrence in similar systems. |
@@ -16,6 +17,7 @@ Inherent risk is the exposure before mitigating controls are credited. Score Lik
 | 5 | High Probability (Certainty) | Expected to occur frequently / continuously when there is not addressed. |
 
 ### Impact
+
 | Level | Rating | Description |
 |---|---|---|
 | 1 | Insignificant | Negligible effect, no customer harm, no regulatory interest, easily absorbed. |
@@ -25,12 +27,13 @@ Inherent risk is the exposure before mitigating controls are credited. Score Lik
 | 5 | Severe | Systemic harm, large fines, license / reputational damage, or safety impact at scale. |
 
 ### Rating Bands
+
 | Range | Rating | Governance Consideration |
 |---|---|---|
 | 1 – 4 | Low | Acceptable with baseline controls and routine oversight. |
 | 5 – 9 | Moderate | Acceptable with standard guardrails, monitoring, and periodic review. |
 | 10 – 15 | High | Deploy only with mandatory controls, approval gates, and active monitoring. |
-| 16 – 25 | Critical | Do not deploy as-is, redesign to reduce exposure or require human-in-the-loop. Go-no-go. (if deployed - Kill) |
+| 16 – 25 | Critical | Do not deploy as-is, redesign to reduce exposure or require human-in-the-loop. Go-no-go. (if deployed - [kill switch](address-the-risk.md#kill-switch--complete-termination-control-of-last-resort)) |
 
 ## Control Effectiveness and Residual Risk
 
@@ -55,4 +58,4 @@ Governance forum reviews and escalates/makes decision on residual risk.
 | Low | Accept | PASS | Proceed | Product / risk owner |
 | Moderate | Accept w/ monitoring | PASS | Proceed with conditions | AI governance lead |
 | High | Mitigate before deploy | CONDITIONAL | Controls must close gap | Governance forum / CRO delegate |
-| Critical | Avoid / redesign | FAIL | Block deployment/Kill | Governance forum + accountable executive |
+| Critical | Avoid / redesign | FAIL | Block deployment / [kill switch](address-the-risk.md#kill-switch--complete-termination-control-of-last-resort) | Governance forum + accountable executive |

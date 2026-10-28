@@ -1,5 +1,8 @@
 # CVSS-Style Mapping — Domain-Recalibrated
 
+> [!WARNING]
+> **Example values only.** The scores and severities on this page were made up to show how the method works. They are not an AIGF assessment of these risks, and are not guidance on how serious any risk is. Replace them with your own assessment.
+
 Rescales the register's Likelihood x Impact scoring onto the open CVSS v3.1 0-10 scale (FIRST.org CVSS v3.1 Specification), then recalibrates that mapping per AI governance risk domain, because CVSS was designed to score a technical vulnerability's exploitability and impact — a concept that fits some AI governance domains far better than others.
 Left in at this time as this addresses vulnerability aspects. NIST-RMF scoring used and a mapping created in addition to address overall risks from industry standards perspective.
 
@@ -7,7 +10,7 @@ Left in at this time as this addresses vulnerability aspects. NIST-RMF scoring u
 
 1) Every risk still gets a raw CVSS Base Score from its Likelihood x Impact (unchanged formula from the prior version).
 2) Each risk's Domain is looked up in the table below to get a default CVSS Applicability (Applicable / Partially Applicable / Not Applicable) and a Domain Weight.
-3) An analyst can override that default for an individual risk in the blue Applicability Override column, e.g. where one risk in an otherwise-technical domain is really a business or compliance risk.
+3) An analyst can override that default for an individual risk (the source workbook has an Applicability Override column for this; the tables below show the effective result), e.g. where one risk in an otherwise-technical domain is really a business or compliance risk.
 4) The recalibrated score = raw CVSS Base Score x effective weight — or "N/A" if the risk is Not Applicable, in which case the Recommended Scoring Adjustment column states how to score it instead.
 5) The same recalibration is applied to the residual (control-adjusted) score.
 
@@ -19,7 +22,7 @@ Left in at this time as this addresses vulnerability aspects. NIST-RMF scoring u
 | Effective Applicability | Applicability Override, if set; otherwise the risk's Domain default | Lets an analyst override the domain default for one risk without changing the whole domain. |
 | Effective Weight | 1.0 if Applicable; Domain Weight if Partially Applicable; N/A (no score) if Not Applicable | The recalibration factor actually applied to the raw CVSS score. |
 | Recalibrated CVSS Base | IF(Effective Applicability = Not Applicable, "N/A", ROUND(CVSS Base Score (raw) x Effective Weight , 1)) | The domain- and risk-aware CVSS-style score; this is the number to report, not the raw score. |
-| Recalibrated CVSS-Adjusted | IF(Effective Applicability = Not Applicable, "N/A", ROUND(Recalibrated CVSS Base x Mitigation Factor , 1)) | Mirrors the register's Residual = Inherent x Mitigation Factor logic, applied to the recalibrated base. |
+| Recalibrated CVSS-Adjusted | IF(Effective Applicability = Not Applicable, "N/A", ROUND(Recalibrated CVSS Base x [Mitigation Factor](scoring-approach.md#control-effectiveness-and-residual-risk) , 1)) | Mirrors the register's Residual = Inherent x Mitigation Factor logic, applied to the recalibrated base. |
 
 Severity bands (official, unchanged): None = 0.0, Low = 0.1-3.9, Medium = 4.0-6.9, High = 7.0-8.9, Critical = 9.0-10.0. Source: FIRST.org CVSS v3.1 Specification, Table 14. "N/A" is not a CVSS band — it flags a risk this scoring system should not be used for.
 
@@ -45,7 +48,7 @@ Severity bands (official, unchanged): None = 0.0, Low = 0.1-3.9, Medium = 4.0-6.
 | 4 | 0.4 |
 | 5 | 0.25 |
 
-## Risk-Level CVSS Mapping (domain-recalibrated)
+## Risk-Level CVSS Mapping (domain-recalibrated) — example values
 
 Core figures per risk. Where Effective Applicability is not "Applicable", the CVSS-equivalent score is N/A by design — see the Recommended Scoring Adjustment notes that follow the table.
 
@@ -115,7 +118,7 @@ Core figures per risk. Where Effective Applicability is not "Applicable", the CV
 - **R-37** (Data Pipeline): CVSS mapping applies with light down-weighting; native score remains the reference figure for lineage-specific audit findings.
 - **R-38** (Business Outcome): Do not report a CVSS-equivalent score. Score and report on the register's native Likelihood x Impact scale only, and route to business/portfolio governance rather than a security forum.
 
-## Heat Map by AI Governance Domain (recalibrated, control-adjusted)
+## Heat Map by AI Governance Domain (recalibrated, control-adjusted) — example values
 
 Counts each domain's 38 risks by their recalibrated CVSS-Adjusted severity. Domains scored Not Applicable show entirely in the N/A column by design — that is the correct, honest read for a domain this scoring system was never meant to grade, not a data gap.
 

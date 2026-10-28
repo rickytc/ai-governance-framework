@@ -1,6 +1,11 @@
 # AI Risk Register —  All Markdown Files List
 
+> [!NOTE]
+> The scores in [risk-register.md](risk-register.md), [cvss-mapping.md](cvss-mapping.md) and [nist-rmf-mapping.md](nist-rmf-mapping.md) are example values that show how the method works. They are not an AIGF assessment of any risk.
+
 ## Contents
+
+New to the terms? Start with [Terminology Mapping](terminology-mapping.md), the glossary for this folder.
 
 | Name | MD File | Covers |
 |---|---|---|
@@ -19,3 +24,4 @@
 |- Stack Coverage | [stack-coverage.md](stack-coverage.md) | Validation of the register against the 10-layer AI stack / parallel business architecture |
 |- NIST RMF Scoring | [nist-rmf-scoring.md](nist-rmf-scoring.md) | NIST-RMF based scoring approach |
 |- NIST RMF Mapping | [nist-rmf-mapping.md](nist-rmf-mapping.md) | NIST-RMF mapping crosswalk to map against current scoring |
+|- Crosswalk | [crosswalk.md](crosswalk.md) | Each step of the register process mapped to the NIST AI RMF, EU AI Act, OSFI E-23, NIST SP 800-53, ISO/IEC 42001 and ISO 31000 |
